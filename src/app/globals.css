@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-sebastian-purple-50: #faf5ff;
+  --color-sebastian-purple-100: #f3e7ff;
+  --color-sebastian-purple-200: #e8d3ff;
+  --color-sebastian-purple-300: #d7b0ff;
+  --color-sebastian-purple-400: #be7eff;
+  --color-sebastian-purple-500: #9f40ff;
+  --color-sebastian-purple-600: #902af3;
+  --color-sebastian-purple-700: #7c1ad6;
+  --color-sebastian-purple-800: #6a1aaf;
+  --color-sebastian-purple-900: #57178c;
+  --color-sebastian-purple-950: #3a0269;
+
+  --color-eric-yellow-50: #fffee7;
+  --color-eric-yellow-100: #fffec1;
+  --color-eric-yellow-200: #fff886;
+  --color-eric-yellow-300: #ffec41;
+  --color-eric-yellow-400: #ffdb0d;
+  --color-eric-yellow-500: #ffcc00;
+  --color-eric-yellow-600: #d19500;
+  --color-eric-yellow-700: #a66a02;
+  --color-eric-yellow-800: #89530a;
+  --color-eric-yellow-900: #74430f;
+  --color-eric-yellow-950: #442304;
+
+  --color-romel-green-50: #f2ffe6;
+  --color-romel-green-100: #e0ffc8;
+  --color-romel-green-200: #c3ff97;
+  --color-romel-green-300: #9bfb5b;
+  --color-romel-green-400: #78f12a;
+  --color-romel-green-500: #54cf0a;
+  --color-romel-green-600: #40ad03;
+  --color-romel-green-700: #328308;
+  --color-romel-green-800: #2b670d;
+  --color-romel-green-900: #265710;
+  --color-romel-green-950: #0f3102;
+
+  --color-desiree-orange-50: #fff8ed;
+  --color-desiree-orange-100: #fff0d5;
+  --color-desiree-orange-200: #fedcaa;
+  --color-desiree-orange-300: #fec273;
+  --color-desiree-orange-400: #fc9e3b;
+  --color-desiree-orange-500: #fa7c0c;
+  --color-desiree-orange-600: #eb660b;
+  --color-desiree-orange-700: #c34c0b;
+  --color-desiree-orange-800: #9b3c11;
+  --color-desiree-orange-900: #7d3411;
+  --color-desiree-orange-950: #431807;
+
+  --font-tektur: "Tektur", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/*noinspection CssInvalidAtRule*/
+@utility debug {
+  border: magenta 1px solid;
 }

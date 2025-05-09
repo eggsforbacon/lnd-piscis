@@ -1,103 +1,104 @@
-import Image from "next/image";
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import Input from "@/components/input";
+import Piscis from "@/components/svg/piscis";
+import {usePiscisStore} from "@/store/piscis";
+import {Disc} from "@/types";
+import Ouroboros from "@/components/svg/ouroboros";
+import Triquetra from "@/components/svg/triquetra";
+import Makora from "@/components/svg/makora";
+import Hypertext from "@/components/Hypertext";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    const {current, path, links, text} = usePiscisStore();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    const renderBackground = (path: Disc) => {
+        switch (path) {
+            case "piscis":
+                return <Piscis className="fill-desiree-orange-800/80 lg:fill-desiree-orange-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+            case "oroboros":
+                return <Ouroboros className="fill-sebastian-purple-800/80 lg:fill-sebastian-purple-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+            case "triqueta":
+                return <Triquetra className="fill-eric-yellow-800/80 lg:fill-eric-yellow-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+            case "makora":
+                return <Makora className="fill-romel-green-800/80 lg:fill-romel-green-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+        }
+    };
+
+    const sheets: { [key in Disc]: string } = {
+        "none": "bg-black/10",
+        "piscis": "bg-desiree-orange-500/10 brightness-50",
+        "oroboros": "bg-sebastian-purple-500/10 brightness-50",
+        "triqueta": "bg-eric-yellow-500/10 brightness-50",
+        "makora": "bg-romel-green-500/10 brightness-50",
+    };
+
+    const textColor: { [key in Disc]: string } = {
+        "none": "text-neutral-400",
+        "piscis": "text-desiree-orange-600",
+        "oroboros": "text-sebastian-purple-600",
+        "triqueta": "text-eric-yellow-600",
+        "makora": "text-romel-green-600",
+    };
+
+    return (
+        <main
+            className="overflow-clip font-tektur text-white flex flex-col items-center justify-start lg:justify-center gap-6 px-6 py-4 bg-gradient-to-t from-neutral-950 via-neutral-900 to-neutral-950 min-w-screen min-h-screen relative">
+            <span
+                className={`absolute top-0 left-0 w-full h-full select-none pointer-events-none backdrop-blur-lg transition-all duration-500 ease-in-out ${sheets[path]}`}/>
+            {current === "" ? (
+                <div
+                    className="absolute flex flex-col items-center justify-center top-0 left-0 w-full h-full select-none pointer-events-none">
+                    <Piscis className="fill-neutral-800/80 lg:fill-neutral-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+                </div>
+            ) : (
+                <div
+                    className="absolute flex flex-col items-center justify-center top-0 left-0 w-full h-full select-none pointer-events-none opacity-30">
+                    {renderBackground(path)}
+                </div>
+            )}
+            {current === "" ? (
+                <section className="max-w-144 text-center relative flex flex-col items-stretch justify-center gap-8 lg:gap-16">
+                    <div className="flex flex-col gap-4 items-stretch">
+                        <h1 className="font-bold text-7xl lg:text-8xl">Piscis</h1>
+                        <h2 className="text-3xl lg:text-5xl">Una experiencia narrativa interactiva</h2>
+                        <Link href="https://github.com/eggsforbacon" target="_blank">Por Samuel Hernández</Link>
+                    </div>
+                    <div className="flex flex-col gap-4 items-stretch">
+                        <h2 className="text-2xl font-bold">Instrucciones</h2>
+                        <p className="text-neutral-400 lg:text-lg">
+                            Verás el texto en el centro de la pantalla, y abajo, la caja en donde puedes escribir. En el
+                            texto, habrá palabras resaltadas en negrita. Escribe alguna de ellas para navegar la
+                            historia. Alternativamente, puedes hacer click sobre las palabras resaltadas.
+                            Puedes comenzar la historia de la misma manera.</p>
+                        <p className="text-sebastian-purple-500">El <Hypertext inherentPath="oroboros">Oroboros</Hypertext>.<br/>Negado a ver, me como mi propia cola.</p>
+                        <p className="text-eric-yellow-500">La <Hypertext inherentPath="triqueta">Triqueta</Hypertext>.<br/>Tan inescapable es el destino como sempiterno.</p>
+                        <p className="text-romel-green-500"><Hypertext inherentPath="makora">Makora</Hypertext>.<br/>El balance se mantiene en cuanto transcienda.</p>
+                        <Input/>
+                    </div>
+                </section>
+            ) : (
+                <section className="max-w-256 text-justify relative flex flex-col items-stretch h-full justify-between lg:justify-start gap-16">
+                    <p className={`lg:text-xl transition-all duration-500 ease-in-out ${textColor[path]}`}>{text.split("$").map((part, index) => {
+                        const texts = part.split("\n");
+                        return (
+                            <React.Fragment key={index}>
+                                {texts.map((text, j) => {
+                                    return (
+                                        <React.Fragment key={j}>
+                                            {text}{j < texts.length - 1 && <br/>}
+                                        </React.Fragment>
+                                    )
+                                })}{index < links.length && <Hypertext>{links[index]}</Hypertext>}
+                            </React.Fragment>
+                        );
+                    })
+                    }</p>
+                    <Input/>
+                </section>
+            )}
+        </main>
+    );
 }
