@@ -20,6 +20,8 @@ export type ChapterName =
     | "muchas vidas" | Disc;
 
 export type Chapter = {
+    ending: boolean;
+    title?: string;
     name: ChapterName,
     text: string,
     links: string[],

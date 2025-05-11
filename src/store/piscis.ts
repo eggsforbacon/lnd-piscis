@@ -6,6 +6,7 @@ interface PiscisState {
     current: ChapterName | "";
     stack: ChapterName[];
     path: Disc;
+    title: string;
     setPath: (path: Disc) => void;
     branches: ChapterName[];
     links: string[];
@@ -13,13 +14,17 @@ interface PiscisState {
     setLinks: (links: ChapterName[]) => void;
     goToBranch: (link: string) => Chapter | false;
     goBack: () => void;
+    ending: boolean;
+    reset: () => void;
 }
 
 export const usePiscisStore = create<PiscisState>()((set, getState) => ({
+    ending: false,
     current: "",
     stack: [],
     path: "none",
     text: "",
+    title: "",
     setPath: (path) => set((_) => ({
         path
     })),
@@ -38,8 +43,10 @@ export const usePiscisStore = create<PiscisState>()((set, getState) => ({
             const chapter = chapters.find(chapter => chapter.name === branch);
             if (chapter) {
                 set((state) => ({
+                    ending: chapter.ending,
                     current: branch,
                     path: chapter.disc,
+                    title: chapter.title ?? "",
                     branches: chapter.branches,
                     links: chapter.links,
                     text: chapter.text,
@@ -53,7 +60,9 @@ export const usePiscisStore = create<PiscisState>()((set, getState) => ({
     goBack: () => set((state) => {
         const chapter = chapters.find(chapter => chapter.name === state.stack[state.stack.length - 2]);
         if (chapter === undefined) return ({
+            end: false,
             current: "",
+            title: "",
             path: "none",
             branches: ["oroboros", "triqueta", "makora"],
             links: ["oroboros", "triqueta", "makora"],
@@ -61,6 +70,8 @@ export const usePiscisStore = create<PiscisState>()((set, getState) => ({
             stack: [],
         })
         return ({
+            ending: chapter.ending,
+            title: chapter.title ?? "",
             current: chapter.name,
             path: chapter.disc,
             branches: chapter.branches,
@@ -69,4 +80,14 @@ export const usePiscisStore = create<PiscisState>()((set, getState) => ({
             stack: state.stack.slice(0, -1),
         });
     }),
+    reset: () => set((_) => ({
+        end: false,
+        current: "",
+        title: "",
+        path: "none",
+        branches: ["oroboros", "triqueta", "makora"],
+        links: ["oroboros", "triqueta", "makora"],
+        text: "",
+        stack: [],
+    }))
 }));

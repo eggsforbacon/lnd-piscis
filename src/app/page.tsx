@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import BackButton from "@/components/input";
+import Navigation from "@/components/navigation";
 import Piscis from "@/components/svg/piscis";
 import {usePiscisStore} from "@/store/piscis";
 import {Disc} from "@/types";
@@ -12,7 +12,7 @@ import Makora from "@/components/svg/makora";
 import Hypertext from "@/components/Hypertext";
 
 export default function Home() {
-    const {current, path, links, text} = usePiscisStore();
+    const {current, path, links, text, title} = usePiscisStore();
 
     const renderBackground = (path: Disc) => {
         switch (path) {
@@ -30,6 +30,21 @@ export default function Home() {
                     className="fill-romel-green-800/80 lg:fill-romel-green-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
         }
     };
+
+    const pickAnimation = (path: Disc) => {
+        switch (path) {
+            case "oroboros":
+                return "animate-ouroboros";
+            case "triqueta":
+                return "animate-triquetra";
+            case "makora":
+                return "animate-makora";
+            case "piscis":
+                return "animate-piscis";
+            default:
+                return "";
+        }
+    }
 
     const sheets: { [key in Disc]: string } = {
         "none": "bg-black/10",
@@ -60,7 +75,7 @@ export default function Home() {
                 </div>
             ) : (
                 <div
-                    className="absolute flex flex-col items-center justify-center top-0 left-0 w-full h-full select-none pointer-events-none opacity-30">
+                    className={`absolute ${pickAnimation(path)} flex flex-col items-center justify-center top-0 left-0 w-full h-full select-none pointer-events-none opacity-30`}>
                     {renderBackground(path)}
                 </div>
             )}
@@ -76,8 +91,8 @@ export default function Home() {
                         <h2 className="text-2xl font-bold">Instrucciones</h2>
                         <p className="text-neutral-400 lg:text-lg">
                             Verás el texto en el centro de la pantalla, y abajo, un botón para volver a la pantalla
-                            anterior. En el texto, habrá palabras resaltadas en negrita. Haz click sobre las palabras
-                            resaltadas para navegar la historia. Puedes comenzar la historia de la misma manera.</p>
+                            anterior. Algunas palabras estarán resaltadas en negrita: haz click sobre ellas
+                            para navegar la historia. Puedes comenzar eligiendo una de las siguientes.</p>
                         <p className="text-sebastian-purple-500">El <Hypertext
                             inherentPath="oroboros">Oroboros</Hypertext>.<br/>Negado a ver, me como mi propia cola.</p>
                         <p className="text-eric-yellow-500">La <Hypertext
@@ -90,6 +105,9 @@ export default function Home() {
             ) : (
                 <section
                     className="max-w-256 text-justify relative flex flex-col items-stretch h-full justify-between lg:justify-start gap-16">
+                    {path === "piscis" && (
+                        <h1 className={"relative text-desiree-orange-400 font-bold text-3xl"}>{title}</h1>
+                    )}
                     <p className={`lg:text-xl transition-all duration-500 ease-in-out ${textColor[path]}`}>{text.split("$").map((part, index) => {
                         const texts = part.split("\n");
                         return (
@@ -105,7 +123,7 @@ export default function Home() {
                         );
                     })
                     }</p>
-                    <BackButton/>
+                    <Navigation/>
                 </section>
             )}
         </main>

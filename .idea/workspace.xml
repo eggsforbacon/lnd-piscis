@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="46dc860e-a58b-4d70-826e-8dd5efcf5c59" name="Changes" comment="fix: updated eslint configuration">
+    <list default="true" id="46dc860e-a58b-4d70-826e-8dd5efcf5c59" name="Changes" comment="feat: removed unnecessary text field and changed intro text accordingly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/chapters.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/chapters.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/piscis.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/piscis.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +110,8 @@
       <workItem from="1746741336358" duration="3291000" />
       <workItem from="1746771069027" duration="10693000" />
       <workItem from="1746783963587" duration="1056000" />
-      <workItem from="1746954018668" duration="695000" />
+      <workItem from="1746954018668" duration="833000" />
+      <workItem from="1746955479212" duration="4658000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit (MVP)">
       <option name="closed" value="true" />
@@ -124,15 +129,35 @@
       <option name="project" value="LOCAL" />
       <updated>1746784445074</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: removed unnecessary text field and changed intro text accordingly">
+      <option name="closed" value="true" />
+      <created>1746954805737</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746954805737</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit (MVP)" />
     <MESSAGE value="fix: updated eslint configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: updated eslint configuration" />
+    <MESSAGE value="feat: removed unnecessary text field and changed intro text accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: removed unnecessary text field and changed intro text accordingly" />
   </component>
 </project>
