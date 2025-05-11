@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import Input from "@/components/input";
+import BackButton from "@/components/input";
 import Piscis from "@/components/svg/piscis";
 import {usePiscisStore} from "@/store/piscis";
 import {Disc} from "@/types";
@@ -17,13 +17,17 @@ export default function Home() {
     const renderBackground = (path: Disc) => {
         switch (path) {
             case "piscis":
-                return <Piscis className="fill-desiree-orange-800/80 lg:fill-desiree-orange-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+                return <Piscis
+                    className="fill-desiree-orange-800/80 lg:fill-desiree-orange-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
             case "oroboros":
-                return <Ouroboros className="fill-sebastian-purple-800/80 lg:fill-sebastian-purple-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+                return <Ouroboros
+                    className="fill-sebastian-purple-800/80 lg:fill-sebastian-purple-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
             case "triqueta":
-                return <Triquetra className="fill-eric-yellow-800/80 lg:fill-eric-yellow-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+                return <Triquetra
+                    className="fill-eric-yellow-800/80 lg:fill-eric-yellow-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
             case "makora":
-                return <Makora className="fill-romel-green-800/80 lg:fill-romel-green-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+                return <Makora
+                    className="fill-romel-green-800/80 lg:fill-romel-green-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
         }
     };
 
@@ -51,7 +55,8 @@ export default function Home() {
             {current === "" ? (
                 <div
                     className="absolute flex flex-col items-center justify-center top-0 left-0 w-full h-full select-none pointer-events-none">
-                    <Piscis className="fill-neutral-800/80 lg:fill-neutral-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
+                    <Piscis
+                        className="fill-neutral-800/80 lg:fill-neutral-900 aspect-square w-128 lg:w-220 h-128 lg:h-220"/>
                 </div>
             ) : (
                 <div
@@ -60,7 +65,8 @@ export default function Home() {
                 </div>
             )}
             {current === "" ? (
-                <section className="max-w-144 text-center relative flex flex-col items-stretch justify-center gap-8 lg:gap-16">
+                <section
+                    className="max-w-144 text-center relative flex flex-col items-stretch justify-center gap-8 lg:gap-16">
                     <div className="flex flex-col gap-4 items-stretch">
                         <h1 className="font-bold text-7xl lg:text-8xl">Piscis</h1>
                         <h2 className="text-3xl lg:text-5xl">Una experiencia narrativa interactiva</h2>
@@ -69,18 +75,21 @@ export default function Home() {
                     <div className="flex flex-col gap-4 items-stretch">
                         <h2 className="text-2xl font-bold">Instrucciones</h2>
                         <p className="text-neutral-400 lg:text-lg">
-                            Verás el texto en el centro de la pantalla, y abajo, la caja en donde puedes escribir. En el
-                            texto, habrá palabras resaltadas en negrita. Escribe alguna de ellas para navegar la
-                            historia. Alternativamente, puedes hacer click sobre las palabras resaltadas.
-                            Puedes comenzar la historia de la misma manera.</p>
-                        <p className="text-sebastian-purple-500">El <Hypertext inherentPath="oroboros">Oroboros</Hypertext>.<br/>Negado a ver, me como mi propia cola.</p>
-                        <p className="text-eric-yellow-500">La <Hypertext inherentPath="triqueta">Triqueta</Hypertext>.<br/>Tan inescapable es el destino como sempiterno.</p>
-                        <p className="text-romel-green-500"><Hypertext inherentPath="makora">Makora</Hypertext>.<br/>El balance se mantiene en cuanto transcienda.</p>
-                        <Input/>
+                            Verás el texto en el centro de la pantalla, y abajo, un botón para volver a la pantalla
+                            anterior. En el texto, habrá palabras resaltadas en negrita. Haz click sobre las palabras
+                            resaltadas para navegar la historia. Puedes comenzar la historia de la misma manera.</p>
+                        <p className="text-sebastian-purple-500">El <Hypertext
+                            inherentPath="oroboros">Oroboros</Hypertext>.<br/>Negado a ver, me como mi propia cola.</p>
+                        <p className="text-eric-yellow-500">La <Hypertext
+                            inherentPath="triqueta">Triqueta</Hypertext>.<br/>Tan inescapable es el destino como
+                            sempiterno.</p>
+                        <p className="text-romel-green-500"><Hypertext inherentPath="makora">Makora</Hypertext>.<br/>El
+                            balance se mantiene en cuanto transcienda.</p>
                     </div>
                 </section>
             ) : (
-                <section className="max-w-256 text-justify relative flex flex-col items-stretch h-full justify-between lg:justify-start gap-16">
+                <section
+                    className="max-w-256 text-justify relative flex flex-col items-stretch h-full justify-between lg:justify-start gap-16">
                     <p className={`lg:text-xl transition-all duration-500 ease-in-out ${textColor[path]}`}>{text.split("$").map((part, index) => {
                         const texts = part.split("\n");
                         return (
@@ -96,7 +105,7 @@ export default function Home() {
                         );
                     })
                     }</p>
-                    <Input/>
+                    <BackButton/>
                 </section>
             )}
         </main>
